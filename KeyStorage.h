@@ -19,7 +19,7 @@
 
 #include "Keymaster.h"
 #include "KeyBuffer.h"
-#include <cutils/multiuser.h>
+#include <ext4_utils/ext4_crypt.h>
 #include <string>
 
 namespace android {
@@ -43,8 +43,7 @@ class KeyAuthentication {
 enum class KeyType {
     DE_SYS,
     DE_USER,
-    CE_USER,
-    ME,
+    CE_USER
 };
 
 extern const KeyAuthentication kEmptyAuthentication;
