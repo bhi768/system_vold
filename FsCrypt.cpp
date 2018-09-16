@@ -203,19 +203,9 @@ static bool read_and_fixate_user_ce_key(userid_t user_id,
     return false;
 }
 
-bool is_ice_supported_external(int flags) {
-    /*
-     * Logic can be changed when more card controllers start supporting ICE.
-     * Until then, checking only for UFS card.
-     */
-    if ((flags & android::vold::Disk::Flags::kUfsCard) ==
-                           android::vold::Disk::Flags::kUfsCard)
-        return true;
-    return false;
-}
-
 bool is_wrapped_key_supported() {
-    return GetEntryForMountPoint(&fstab_default, DATA_MNT_POINT)->fs_mgr_flags.wrapped_key;
+    return fs_mgr_is_wrapped_key_supported(
+        fs_mgr_get_entry_for_mount_point(fstab_default, DATA_MNT_POINT));
 }
 
 bool is_wrapped_key_supported_external(int flags) {
