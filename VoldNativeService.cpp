@@ -692,7 +692,7 @@ binder::Status VoldNativeService::fbeEnable() {
     ENFORCE_UID(AID_SYSTEM);
     ACQUIRE_CRYPT_LOCK;
 
-    return translateBool(fscrypt_initialize_systemwide_keys());
+    return translateBool(fscrypt_initialize_global_de());
 }
 
 binder::Status VoldNativeService::mountDefaultEncrypted() {
